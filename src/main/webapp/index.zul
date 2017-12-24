@@ -1,8 +1,30 @@
 <zk>
 	<window apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('com.vshershnov.PayGateIntegration.MyViewModel')"
+		viewModel="@id('vm')@init('com.vshershnov.PayGateIntegration.TransactionViewModel')"
 		validationMessages="@id('vmsgs')">
+		
+		<hlayout>Card Number:
+    	<textbox id="cardNumber" value = "@save(vm.cardNumber)"/></hlayout>
+    	<hlayout>Exp Date:
+    	<textbox id="expDate" value = "@save(vm.expDate)"/></hlayout>
+    	<hlayout>CSC Code:    	
+    	<textbox id="cscCode" value = "@save(vm.cscCode)"/></hlayout>
+    	<hlayout>Amount:
+    	<textbox id="amount" value = "@save(vm.amount)"/></hlayout>
+    	<hlayout>Holder Name:
+    	<textbox id="holderName" value = "@save(vm.holderName)"/></hlayout>
+    	<hlayout>Street:
+    	<textbox id="street" value = "@save(vm.street)"/></hlayout>
+    	<hlayout>City:
+    	<textbox id="city" value = "@save(vm.city)"/></hlayout>
+    	<hlayout>State
+    	<textbox id="state" value = "@save(vm.state)"/></hlayout>
+    	<hlayout>ZipCode
+    	<textbox id="zipCode" value = "@save(vm.zipCode)"/></hlayout> 	
+		
 		<hlayout>today is <label value="@load(vm.answer)" /></hlayout>
+		
+		
 		<button label="ask" onClick="@command('cmd')"/>
 	</window>
 </zk>

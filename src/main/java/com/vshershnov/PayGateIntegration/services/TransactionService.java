@@ -1,6 +1,7 @@
 package com.vshershnov.PayGateIntegration.services;
 
-public interface MyService {
+public interface TransactionService {
 
 	String ask(String question);
+	String sale(String question);
 }
