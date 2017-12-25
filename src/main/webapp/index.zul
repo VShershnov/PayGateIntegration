@@ -1,30 +1,78 @@
-<zk>
+<zk xmlns:w="client">
+	<style src="/widgets/effects/form_effect/styles.css"/>
+	
+	 <!-- Load the script -->
+    <script type="text/javascript" src="/widgets/effects/form_effect/jquery.watermarkinput.js" />
+    <script type="text/javascript" src="/widgets/effects/form_effect/jquery.maskedinput.min.js" />
+    <script type="text/javascript">
+        /* customize mask character groups */
+        $.mask.definitions['A']='[A-Z]';
+        $.mask.definitions['m']='[01]';
+        $.mask.definitions['d']='[0123]';
+        $.mask.definitions['y']='[12]';
+    </script>
+    
 	<window apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm')@init('com.vshershnov.PayGateIntegration.TransactionViewModel')"
 		validationMessages="@id('vmsgs')">
 		
-		<hlayout>Card Number:
-    	<textbox id="cardNumber" value = "@save(vm.cardNumber)"/></hlayout>
-    	<hlayout>Exp Date:
-    	<textbox id="expDate" value = "@save(vm.expDate)"/></hlayout>
-    	<hlayout>CSC Code:    	
-    	<textbox id="cscCode" value = "@save(vm.cscCode)"/></hlayout>
-    	<hlayout>Amount:
-    	<textbox id="amount" value = "@save(vm.amount)"/></hlayout>
-    	<hlayout>Holder Name:
-    	<textbox id="holderName" value = "@save(vm.holderName)"/></hlayout>
-    	<hlayout>Street:
-    	<textbox id="street" value = "@save(vm.street)"/></hlayout>
-    	<hlayout>City:
-    	<textbox id="city" value = "@save(vm.city)"/></hlayout>
-    	<hlayout>State
-    	<textbox id="state" value = "@save(vm.state)"/></hlayout>
-    	<hlayout>ZipCode
-    	<textbox id="zipCode" value = "@save(vm.zipCode)"/></hlayout> 	
+		<vlayout spacing="7px">
+			 <label value="Pay Gate Transaction Sale Info" style="font-size:16px;font-weight:bold;" />
+			 
+			<hlayout spacing="20px" valign="middle"> 
+				<label class="name" value="Card Number: "/>				
+	    		<textbox id="cardNumber" width='150px' value = "@save(vm.cardNumber) @validator('beanValidator')"/>
+	    		<label value="@load(vmsgs[cardNumber])"/>
+	    		Card Number:
+	    	</hlayout>	    	
+	    	<hlayout spacing="20px" valign="middle"> 
+				<label class="name" value="Exp Date: "/>				
+	    		<textbox id="expDate" width='150px' value = "@save(vm.expDate)"/>
+	    		Exp Date:
+	    	</hlayout>	    	
+	    	<hlayout spacing="20px" valign="middle"> 
+				<label class="name" value="CSC Code: "/>				
+	    		<textbox id="cscCode" width='150px' value = "@save(vm.cscCode)"/>
+	    		CSC Code:
+	    	</hlayout>	    	
+	    	<hlayout spacing="20px" valign="middle"> 
+				<label class="name" value="Amount: "/>				
+	    		<textbox id="amount" width='150px' value = "@save(vm.amount)"/>
+	    		Amount:
+	    	</hlayout>
+	    	
+	    	<hlayout spacing="20px" valign="middle"> 
+				<label class="name" value="Holder Name: "/>				
+	    		<textbox id="holderName" width='150px' value = "@save(vm.holderName)" />
+	    		Holder Name:
+	    	</hlayout>
+	    	
+	    	<hlayout spacing="20px" valign="middle"> 
+				<label class="name" value="Street: "/>				
+	    		<textbox id="street" width='150px' value = "@save(vm.street)"/>
+	    		Street:
+	    	</hlayout>
+	    	
+	    	<hlayout spacing="20px" valign="middle"> 
+				<label class="name" value="City: "/>				
+	    		<textbox id="city" width='150px' value = "@save(vm.city)"/>
+	    		City:
+	    	</hlayout>
+	    	
+	    	<hlayout spacing="20px" valign="middle"> 
+				<label class="name" value="State: "/>				
+	    		<textbox id="state" width='150px' value = "@save(vm.state)"/>
+	    		State:
+	    	</hlayout>
+	    	
+	    	<hlayout spacing="20px" valign="middle"> 
+				<label class="name" value="ZipCode: "/>				
+	    		<textbox id="zipCode" width='150px' value = "@save(vm.zipCode)"/>
+	    		ZipCode:
+	    	</hlayout>	    	
+		</vlayout>
 		
-		<hlayout>today is <label value="@load(vm.answer)" /></hlayout>
-		
-		
+		<hlayout>today is <label value="@load(vm.answer)" /></hlayout>		
 		<button label="ask" onClick="@command('cmd')"/>
 	</window>
 </zk>

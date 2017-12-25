@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.vshershnov.PayGateIntegration.services.TransactionService;
 
-@Service("TransactionService")
+@Service("transactionService")
 @Scope(value = "singleton", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class TransactionServiceImpl implements TransactionService {
 
@@ -17,9 +17,11 @@ public class TransactionServiceImpl implements TransactionService {
 		return DateFormat.getDateInstance().format(new Date());
 	}
 
+	/*
 	public String sale(String question) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	*/
 
 }
