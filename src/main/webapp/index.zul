@@ -23,56 +23,57 @@
 				<label class="name" value="Card Number: "/>				
 	    		<textbox id="cardNumber" width='150px' value = "@save(vm.cardNumber) @validator('beanValidator')"/>
 	    		<label value="@load(vmsgs[cardNumber])"/>
-	    		Card Number:
+	 
 	    	</hlayout>	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="Exp Date: "/>				
 	    		<textbox id="expDate" width='150px' value = "@save(vm.expDate)"/>
-	    		Exp Date:
+	    	
 	    	</hlayout>	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="CSC Code: "/>				
 	    		<textbox id="cscCode" width='150px' value = "@save(vm.cscCode)"/>
-	    		CSC Code:
+	    	
 	    	</hlayout>	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="Amount: "/>				
 	    		<textbox id="amount" width='150px' value = "@save(vm.amount)"/>
-	    		Amount:
+	    	
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="Holder Name: "/>				
 	    		<textbox id="holderName" width='150px' value = "@save(vm.holderName)" />
-	    		Holder Name:
+	    	
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="Street: "/>				
 	    		<textbox id="street" width='150px' value = "@save(vm.street)"/>
-	    		Street:
+	    	
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="City: "/>				
 	    		<textbox id="city" width='150px' value = "@save(vm.city)"/>
-	    		City:
+	    	
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="State: "/>				
 	    		<textbox id="state" width='150px' value = "@save(vm.state)"/>
-	    		State:
+	    	
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="ZipCode: "/>				
 	    		<textbox id="zipCode" width='150px' value = "@save(vm.zipCode)"/>
-	    		ZipCode:
-	    	</hlayout>	    	
-		</vlayout>
+	    	
+	    	</hlayout>
+	    	
+	    	<hlayout>today is <label value="@load(vm.answer)" /></hlayout>		
+			<button label="Submit" onClick="@command('cmd')"/>
+		</vlayout>		
 		
-		<hlayout>today is <label value="@load(vm.answer)" /></hlayout>		
-		<button label="ask" onClick="@command('cmd')"/>
 	</window>
 </zk>

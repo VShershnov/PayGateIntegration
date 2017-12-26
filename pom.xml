@@ -3,7 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.vshershnov</groupId>
 	<artifactId>PayGateIntegration</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<name>The PayGateIntegration Project</name>
+	<description>The PayGateIntegration Project</description>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>	
+	
 	<properties>
 		<zk.version>8.5.0-Eval</zk.version>
 		<spring.version>3.1.2.RELEASE</spring.version>
@@ -11,9 +15,7 @@
 		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
 		<packname>-${project.version}-FL-${maven.build.timestamp}</packname>
 	</properties>
-	<packaging>war</packaging>
-	<name>The PayGateIntegration Project</name>
-	<description>The PayGateIntegration Project</description>
+	
 	<licenses>
 		<license>
 			<name>GNU LESSER GENERAL PUBLIC LICENSE, Version 3</name>
@@ -21,6 +23,7 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
+	
 	<repositories>
 		<repository>
 			<id>ZK CE</id>
@@ -33,6 +36,7 @@
 			<url>http://mavensync.zkoss.org/eval</url>
 		</repository>
 	</repositories>
+	
 	<pluginRepositories>
 		<pluginRepository>
 			<id>zkmaven</id>
@@ -40,7 +44,9 @@
 			<url>http://mavensync.zkoss.org/maven2/</url>
 		</pluginRepository>
 	</pluginRepositories>
+	
 	<dependencies>
+		<!-- ZKoss dependencies -->
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zkbind</artifactId>
@@ -66,14 +72,33 @@
 			<artifactId>zhtml</artifactId>
 			<version>${zk.version}</version>
 		</dependency>
-		
+	
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>${commons-io}</version>
 		</dependency>
-
+	
 		<!-- Spring 3 dependencies -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		    <version>3.1.2.RELEASE</version>
+		</dependency>	
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
@@ -84,69 +109,86 @@
 			<artifactId>cglib</artifactId>
 			<version>2.2.2</version>
 		</dependency>
-		
+	
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zkspring-core</artifactId>
 			<version>3.1.1</version>
 		</dependency>
-
+	
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zkspring-webflow</artifactId>
 			<version>3.1.1</version>
 		</dependency>
-		
+	
 		<!-- JSR 303 Hibernate Validator -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.0.2.GA</version>
 		</dependency>
-		
+	
+		<!-- Loggining Dependencies -->
 		<dependency>
-		<groupId>org.apache.logging.log4j</groupId>
-		<artifactId>log4j-api</artifactId>
-		<version>2.9.0</version>
-	</dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.9.0</version>
+		</dependency>
 	
-	<dependency>
-		<groupId>org.apache.logging.log4j</groupId>
-		<artifactId>log4j-core</artifactId>
-		<version>2.9.0</version>
-	</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.9.0</version>
+			<scope>runtime</scope>
+		</dependency>
 	
-	<dependency>
-		<groupId>org.apache.logging.log4j</groupId>
-		<artifactId>log4j-web</artifactId>
-		<version>2.9.1</version>
-	</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-web</artifactId>
+			<version>2.9.1</version>
+			<scope>runtime</scope>
+		</dependency>
 		
+		<!-- @Inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+
+		<!-- Servlet -->
+		<dependency>
+	        <groupId>javax.servlet</groupId>
+	        <artifactId>javax.servlet-api</artifactId>
+	        <version>3.1.0</version>
+	        <scope>provided</scope>
+   		 </dependency>
+    	<dependency>
+	        <groupId>javax.servlet.jsp</groupId>
+	        <artifactId>javax.servlet.jsp-api</artifactId>
+	        <version>2.3.1</version>
+	        <scope>provided</scope>
+   		 </dependency>		
+				
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>	
 	</dependencies>
+	
 	<build>
 		<finalName>${project.artifactId}</finalName>
-		<plugins>
-			<!-- Run with Jetty -->
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>7.6.8.v20121106</version>
-				<configuration>
-					<webAppConfig>
-						<contextPath>/${project.artifactId}</contextPath>
-						<allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>
-					</webAppConfig>
-					<scanIntervalSeconds>5</scanIntervalSeconds>
-				</configuration>
-			</plugin>
+		<plugins>			
 			<!-- Compile java -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>2.5.1</version>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 			<!-- Build war -->

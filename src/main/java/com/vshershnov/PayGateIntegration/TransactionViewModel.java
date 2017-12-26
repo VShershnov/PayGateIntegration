@@ -32,8 +32,7 @@ public class TransactionViewModel {
 
 	@Init
 	public void init() {
-		answer = "?";
-		cardNumber = "9999 9999 9999 9999 9999";
+		answer = "?";		
 	}
 
 	@Command
@@ -141,7 +140,7 @@ public class TransactionViewModel {
 	 * @return the cardNumber
 	 */
 	@NotNull(message="{field.empty}")
-	@Size(min=16, message="{creditCard.number.size}")
+	@Size(min=16, message="{creditCard.number.size, should be 16}")
 	public String getCardNumber() {
 		return cardNumber;
 	}
