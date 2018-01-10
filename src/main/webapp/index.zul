@@ -1,17 +1,5 @@
 <zk xmlns:w="client">
-	<style src="/widgets/effects/form_effect/styles.css"/>
-	
-	 <!-- Load the script -->
-    <script type="text/javascript" src="/widgets/effects/form_effect/jquery.watermarkinput.js" />
-    <script type="text/javascript" src="/widgets/effects/form_effect/jquery.maskedinput.min.js" />
-    <script type="text/javascript">
-        /* customize mask character groups */
-        $.mask.definitions['A']='[A-Z]';
-        $.mask.definitions['m']='[01]';
-        $.mask.definitions['d']='[0123]';
-        $.mask.definitions['y']='[12]';
-    </script>
-    
+	<style src="/widgets/effects/form_effect/styles.css"/>    
 	<window apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm')@init('com.vshershnov.PayGateIntegration.TransactionViewModel')"
 		validationMessages="@id('vmsgs')">

@@ -115,7 +115,13 @@
 			<artifactId>zkspring-core</artifactId>
 			<version>3.1.1</version>
 		</dependency>
-	
+		
+		<dependency>
+            <groupId>org.zkoss.zkspringmvc</groupId>
+            <artifactId>zkspringmvc</artifactId>
+            <version>1.0.FL.20160726-Eval</version>
+        </dependency>
+		
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zkspring-webflow</artifactId>
