@@ -10,16 +10,8 @@
 	<!-- Spring configuration -->
 	 <servlet>
         <servlet-name>springmvc</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet
-        </servlet-class>
-		<init-param>
-			<param-name>contextClass</param-name>
-			<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
-		</init-param>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>>/WEB-INF/</param-value>
-		</init-param>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -30,6 +22,12 @@
 	
 	
 	<!-- Initialize spring context -->
+	<context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+	
+	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
@@ -107,7 +105,7 @@
 	
 	<!-- [Optional] Session timeout -->
 	<session-config>
-		<session-timeout>60</session-timeout>
+		<session-timeout>90</session-timeout>
 	</session-config>	
 
 	<welcome-file-list>

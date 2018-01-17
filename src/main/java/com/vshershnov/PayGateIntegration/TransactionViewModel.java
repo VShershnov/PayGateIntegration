@@ -4,11 +4,15 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.zk.ui.select.annotation.VariableResolver;
+import org.zkoss.zk.ui.select.annotation.WireVariable;
 
 import com.vshershnov.PayGateIntegration.services.TransactionService;
 
+@VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class TransactionViewModel {
 	
+	@WireVariable
 	private TransactionService transactionService;
 	
 	private String answer;
@@ -18,7 +22,7 @@ public class TransactionViewModel {
 	
 	private Long amount;
 	
-	private String holderName;	
+	private String holderName;
 	private String street;
 	private String city;
 	private String state;

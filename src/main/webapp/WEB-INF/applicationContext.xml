@@ -1,6 +1,6 @@
-<beans:beans xmlns="http://www.springframework.org/schema/mvc" 
+<beans xmlns="http://www.springframework.org/schema/beans" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:beans="http://www.springframework.org/schema/beans"
+	
 	xmlns:context="http://www.springframework.org/schema/context"
 	
 	xsi:schemaLocation="
@@ -8,17 +8,5 @@
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">        
-    
-    <!-- Setup the ZK SpringMVC extension -->
-	<context:annotation-config/>
-	<beans:bean class="org.zkoss.zkspringmvc.config.ZKWebMvcConfigurerAdapter"/>
-    
- 	<context:component-scan base-package="com.vshershnov.PayGateIntegration" />
- 
- 	<!-- Use ZKUrlBasedViewResolver and ZKView instead -->
-	<beans:bean id="viewResolver" class="org.zkoss.zkspringmvc.ZKUrlBasedViewResolver">
-    <beans:property name="viewClass" value="org.zkoss.zkspringmvc.ZKView"/>
-    <beans:property name="prefix" value="/WEB-INF/" />
-    <beans:property name="suffix" value="" />
-	</beans:bean>
-</beans:beans>
+   
+</beans>

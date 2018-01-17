@@ -1,7 +1,7 @@
-<zk xmlns:w="client">
+<zk xmlns:ca="client/attribute">
 	<style src="/widgets/effects/form_effect/styles.css"/>    
 	<window apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('com.vshershnov.PayGateIntegration.TransactionViewModel')"
+		viewModel="@id('vm') @init('com.vshershnov.PayGateIntegration.TransactionViewModel')"
 		validationMessages="@id('vmsgs')">
 		
 		<vlayout spacing="7px">

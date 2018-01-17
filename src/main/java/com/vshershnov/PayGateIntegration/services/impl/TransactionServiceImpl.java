@@ -17,11 +17,10 @@ public class TransactionServiceImpl implements TransactionService {
 		return DateFormat.getDateInstance().format(new Date());
 	}
 
-	/*
+	
 	public String sale(String question) {
 		// TODO Auto-generated method stub
-		return null;
+		return "Sale Sucssesfull";
 	}
-	*/
 
 }
