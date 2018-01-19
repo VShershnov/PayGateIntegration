@@ -12,13 +12,12 @@ import com.vshershnov.PayGateIntegration.services.TransactionService;
 @Service("transactionService")
 @Scope(value = "singleton", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class TransactionServiceImpl implements TransactionService {
-
+	
 	public String ask(String question) {
 		return DateFormat.getDateInstance().format(new Date());
 	}
-
 	
-	public String sale(String question) {
+	public String sale(String question1) {
 		// TODO Auto-generated method stub
 		return "Sale Sucssesfull";
 	}

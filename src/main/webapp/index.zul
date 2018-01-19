@@ -1,4 +1,4 @@
-<zk xmlns:ca="client/attribute">
+<zk>
 	<style src="/widgets/effects/form_effect/styles.css"/>    
 	<window apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('com.vshershnov.PayGateIntegration.TransactionViewModel')"
@@ -55,12 +55,11 @@
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="ZipCode: "/>				
-	    		<textbox id="zipCode" width='150px' value = "@save(vm.zipCode)"/>
-	    	
+	    		<textbox id="zipCode" width='150px' value = "@save(vm.zipCode)"/>	    	
 	    	</hlayout>
 	    	
 	    	<hlayout>today is <label value="@load(vm.answer)" /></hlayout>		
-			<button label="Submit" onClick="@command('cmd')"/>
+			<button label="Submit transaction date" onClick="@command('cmd')"/>
 		</vlayout>		
 		
 	</window>

@@ -3,7 +3,9 @@ package com.vshershnov.PayGateIntegration;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 
@@ -11,7 +13,7 @@ import com.vshershnov.PayGateIntegration.services.TransactionService;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class TransactionViewModel {
-	
+
 	@WireVariable
 	private TransactionService transactionService;
 	
@@ -33,6 +35,13 @@ public class TransactionViewModel {
 		answer = "?";		
 	}
 
+	@Command
+	@NotifyChange("answer")
+	public void cmd() {
+		answer = transactionService.ask("What day is today?");
+	}
+
+	
 	public String getAnswer() {
 		return answer;
 	}
