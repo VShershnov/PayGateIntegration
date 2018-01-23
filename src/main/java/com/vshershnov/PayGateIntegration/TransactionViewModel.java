@@ -1,11 +1,16 @@
 package com.vshershnov.PayGateIntegration;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zk.ui.Execution;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 
@@ -15,8 +20,7 @@ import com.vshershnov.PayGateIntegration.services.TransactionService;
 public class TransactionViewModel {
 
 	@WireVariable
-	private TransactionService transactionService;
-	
+	private TransactionService transactionService;	
 	private String answer;
 	private String cardNumber;
 	private String expDate;
@@ -41,6 +45,12 @@ public class TransactionViewModel {
 		answer = transactionService.ask("What day is today?");
 	}
 
+	@Command
+	public void sale() throws IOException {
+		if (!transactionService.sale("any").isEmpty()) {
+		    Executions.sendRedirect("./zul/result.zul");
+		}
+	}
 	
 	public String getAnswer() {
 		return answer;

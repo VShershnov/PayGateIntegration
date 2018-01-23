@@ -21,5 +21,4 @@ public class TransactionServiceImpl implements TransactionService {
 		// TODO Auto-generated method stub
 		return "Sale Sucssesfull";
 	}
-
 }

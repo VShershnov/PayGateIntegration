@@ -1,0 +1,8 @@
+<?page title="Sale result" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Sale result" border="normal">
+	Sale Sucssesfull!!
+	
+	<button label="Return" href="index.zul"/>
+	</window>
+</zk>
