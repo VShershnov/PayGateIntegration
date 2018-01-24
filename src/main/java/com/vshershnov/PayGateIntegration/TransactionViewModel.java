@@ -2,7 +2,6 @@ package com.vshershnov.PayGateIntegration;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -11,14 +10,16 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 
+import com.vshershnov.PayGateIntegration.domain.Transaction;
 import com.vshershnov.PayGateIntegration.services.TransactionService;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class TransactionViewModel {
 
 	@WireVariable
-	private TransactionService transactionService;	
-	private String answer;
+	private TransactionService transactionService;
+	private Transaction transaction;
+	
 	private String cardNumber;
 	private String expDate;
 	private String cscCode;
@@ -32,16 +33,11 @@ public class TransactionViewModel {
 	private String zipCode;	
 	
 
-	@Command
+	@Command	
 	public void sale() throws IOException {
-		if (!transactionService.sale("any").isEmpty()) {
-		    Executions.sendRedirect("/result.zul");
-		}
-	}
-	
-	public String getAnswer() {
-		return answer;
-	}
+		transactionService.sale(transaction);
+		Executions.sendRedirect("/result.zul");		
+	}	
 	
 	public String getHolderName() {
 		return holderName;
@@ -53,11 +49,7 @@ public class TransactionViewModel {
 	
 	public void setTransactionService(TransactionService transactionService) {
 		this.transactionService = transactionService;
-	}
-	
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
+	}	
 	
 	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;

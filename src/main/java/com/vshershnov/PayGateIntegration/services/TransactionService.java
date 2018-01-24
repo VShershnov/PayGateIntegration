@@ -1,7 +1,9 @@
 package com.vshershnov.PayGateIntegration.services;
 
+import com.vshershnov.PayGateIntegration.domain.Transaction;
 
 public interface TransactionService {
-
-	String sale(String question);
+	
+	boolean isSaleSuccessful();
+	void sale(Transaction transaction);
 }

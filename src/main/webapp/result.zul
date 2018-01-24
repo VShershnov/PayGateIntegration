@@ -1,8 +1,13 @@
 <?page title="Sale result" contentType="text/html;charset=UTF-8"?>
 <zk>
-	<window title="Sale result" border="normal">
-	Sale Sucssesfull!!
+	<window apply="org.zkoss.bind.BindComposer"		
+		viewModel="@id('vm')@init('com.vshershnov.PayGateIntegration.ResultViewModel')"
+		validationMessages="@id('vmsgs')"
+		title="Sale result" border="normal">
 	
-	<button label="Return" href="index.zul"/>
+	<vlayout spacing="7px">
+		<hlayout> <label value="@load(vm.answer)" /></hlayout>	
+		<button label="Return" href="index.zul"/>		
+	</vlayout>
 	</window>
 </zk>
