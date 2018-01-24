@@ -58,9 +58,6 @@
 	    		<textbox id="zipCode" width='150px' value = "@save(vm.zipCode)"/>	    	
 	    	</hlayout>
 	    	
-	    	<hlayout>today is <label value="@load(vm.answer)" /></hlayout>		
-			<button label="Update date" onClick="@command('cmd')"/>
-			
 			<button label="Confirm sale transaction" onClick="@command('sale')"/>
 		</vlayout>		
 	</window>

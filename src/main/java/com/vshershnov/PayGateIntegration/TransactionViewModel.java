@@ -7,9 +7,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.zkoss.bind.annotation.Command;
-import org.zkoss.bind.annotation.Init;
-import org.zkoss.bind.annotation.NotifyChange;
-import org.zkoss.zk.ui.Execution;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
@@ -32,23 +29,13 @@ public class TransactionViewModel {
 	private String street;
 	private String city;
 	private String state;
-	private String zipCode;
+	private String zipCode;	
 	
-	@Init
-	public void init() {
-		answer = "?";		
-	}
-
-	@Command
-	@NotifyChange("answer")
-	public void cmd() {
-		answer = transactionService.ask("What day is today?");
-	}
 
 	@Command
 	public void sale() throws IOException {
 		if (!transactionService.sale("any").isEmpty()) {
-		    Executions.sendRedirect("./zul/result.zul");
+		    Executions.sendRedirect("/result.zul");
 		}
 	}
 	
