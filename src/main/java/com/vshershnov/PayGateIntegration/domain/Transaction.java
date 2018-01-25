@@ -1,10 +1,13 @@
 package com.vshershnov.PayGateIntegration.domain;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Transaction {
 
 	private Card card;
 	
-	private Long amount;
+	private Integer amount;
 	
 	private String holderName;	
 	private String street;
@@ -25,14 +28,17 @@ public class Transaction {
 		this.card = card;
 	}
 	
-	public Long getAmount() {
+	@NotNull(message="{field.empty, type amount in cents}")
+	public Integer getAmount() {
 		return amount;
 	}
 	
-	public void setAmount(Long amount) {
+	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
 	
+	@NotNull(message="{field.empty}")
+	@Size(max=150, message="{holderName.size, should be max=150}")
 	public String getHolderName() {
 		return holderName;
 	}
@@ -41,6 +47,8 @@ public class Transaction {
 		this.holderName = holdername;
 	}
 	
+	@NotNull(message="{field.empty}")
+	@Size(max=128, message="{street.size, should be max=128}")
 	public String getStreet() {
 		return street;
 	}
@@ -49,6 +57,8 @@ public class Transaction {
 		this.street = street;
 	}
 	
+	@NotNull(message="{field.empty}")
+	@Size(max=50, message="{city.size, should be max=50}")
 	public String getCity() {
 		return city;
 	}
@@ -57,6 +67,8 @@ public class Transaction {
 		this.city = city;
 	}
 	
+	@NotNull(message="{field.empty}")
+	@Size(max=2, message="{state.size, should be max=2}")
 	public String getState() {
 		return state;
 	}
@@ -65,14 +77,24 @@ public class Transaction {
 		this.state = state;
 	}
 	
+	@NotNull(message="{field.empty}")
+	@Size(max=15, message="{zipCode.size, should be max=15}")
 	public String getZipCode() {
 		return zipCode;
 	}
 	
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
-	}
+	}	
 	
+	@Override
+	public String toString() {
+		return "Transaction [card=" + card + ", amount=" + amount
+				+ ", holderName=" + holderName + ", street=" + street
+				+ ", city=" + city + ", state=" + state + ", zipCode="
+				+ zipCode + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

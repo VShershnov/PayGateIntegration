@@ -14,9 +14,9 @@ public class TransactionServiceImpl implements TransactionService {
 	private boolean transactionResult;
 	
 	public void sale(Transaction transaction) {
-		// TODO Auto-generated method stub
+		System.out.println(transaction.toString());		
 		setTransactionResult(true);
-	}	
+	}
 
 	public void setTransactionResult(boolean transactionResult) {
 		this.transactionResult = transactionResult;
@@ -25,6 +25,4 @@ public class TransactionServiceImpl implements TransactionService {
 	public boolean isSaleSuccessful() {		
 		return transactionResult;
 	}
-	
-	
 }

@@ -11,6 +11,8 @@ public class Card {
 	/**
 	 * @return the expDate
 	 */
+	@NotNull(message="{field.empty}")
+	@Size(min=4, max=10, message="{card.expDate.size, should be min=5 max=10}")
 	public String getExpDate() {
 		return expDate;
 	}
@@ -24,7 +26,7 @@ public class Card {
 	 * @return the cradNumber
 	 */
 	@NotNull(message="{field.empty}")
-	@Size(min=16, message="{creditCard.number.size, should be 16}")
+	@Size(min=16, max=20, message="{card.number.size, should be min=16 max=20}")
 	public String getCradNumber() {
 		return cradNumber;
 	}
@@ -37,6 +39,8 @@ public class Card {
 	/**
 	 * @return the cscCode
 	 */
+	@NotNull(message="{field.empty}")
+	@Size(min=3, max=4, message="{card.cscCode.size, should be min=3 max=4}")
 	public String getCscCode() {
 		return cscCode;
 	}
@@ -45,7 +49,14 @@ public class Card {
 	 */
 	public void setCscCode(String cscCode) {
 		this.cscCode = cscCode;
+	}	
+	
+	@Override
+	public String toString() {
+		return "Card [cradNumber=" + cradNumber + ", expDate=" + expDate
+				+ ", cscCode=" + cscCode + "]";
 	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
