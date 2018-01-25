@@ -13,6 +13,7 @@ public class Transaction {
 	private String zipCode;
 	
 	public Transaction() {
+		card = new Card();
 	}
 
 	

@@ -1,28 +1,30 @@
 package com.vshershnov.PayGateIntegration.domain;
 
-import java.util.Date;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class Card {
-	
-	private Date expDate;
-	
+		
 	private String cradNumber;
+	private String expDate;
 	private String cscCode;
 	/**
 	 * @return the expDate
 	 */
-	public Date getExpDate() {
+	public String getExpDate() {
 		return expDate;
 	}
 	/**
 	 * @param expDate the expDate to set
 	 */
-	public void setExpDate(Date expDate) {
+	public void setExpDate(String expDate) {
 		this.expDate = expDate;
 	}
 	/**
 	 * @return the cradNumber
 	 */
+	@NotNull(message="{field.empty}")
+	@Size(min=16, message="{creditCard.number.size, should be 16}")
 	public String getCradNumber() {
 		return cradNumber;
 	}

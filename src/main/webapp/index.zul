@@ -9,51 +9,51 @@
 			 
 			<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="Card Number: "/>				
-	    		<textbox id="cardNumber" width='150px' value = "@save(vm.cardNumber) @validator('beanValidator')"/>
+	    		<textbox id="cardNumber" width='150px' value = "@save(vm.transaction.card.cradNumber) @validator('beanValidator')"/>
 	    		<label value="@load(vmsgs[cardNumber])"/>	 
 	    	</hlayout>	    	
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="Exp Date: "/>				
-	    		<textbox id="expDate" width='150px' value = "@save(vm.expDate)"/>	    	
+	    		<textbox id="expDate" width='150px' value = "@save(vm.transaction.card.expDate)"/>	    	
 	    	</hlayout>	    	
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="CSC Code: "/>				
-	    		<textbox id="cscCode" width='150px' value = "@save(vm.cscCode)"/>
+	    		<textbox id="cscCode" width='150px' value = "@save(vm.transaction.card.cscCode)"/>
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="Amount: "/>				
-	    		<textbox id="amount" width='150px' value = "@save(vm.amount)"/>	    	
+	    		<textbox id="amount" width='150px' value = "@save(vm.transaction.amount)"/>	    	
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="Holder Name: "/>				
-	    		<textbox id="holderName" width='150px' value = "@save(vm.holderName)" />	    	
+	    		<textbox id="holderName" width='150px' value = "@save(vm.transaction.holderName)" />	    	
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="Street: "/>				
-	    		<textbox id="street" width='150px' value = "@save(vm.street)"/>
+	    		<textbox id="street" width='150px' value = "@save(vm.transaction.street)"/>
 	    	
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="City: "/>				
-	    		<textbox id="city" width='150px' value = "@save(vm.city)"/>
+	    		<textbox id="city" width='150px' value = "@save(vm.transaction.city)"/>
 	    	
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="State: "/>				
-	    		<textbox id="state" width='150px' value = "@save(vm.state)"/>
+	    		<textbox id="state" width='150px' value = "@save(vm.transaction.state)"/>
 	    	
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="ZipCode: "/>				
-	    		<textbox id="zipCode" width='150px' value = "@save(vm.zipCode)"/>	    	
+	    		<textbox id="zipCode" width='150px' value = "@save(vm.transaction.zipCode)"/>	    	
 	    	</hlayout>
 	    	
 			<button label="Confirm sale transaction" onClick="@command('sale')"/>
