@@ -8,36 +8,57 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class UnichargeProcessingAPIServiceImp {
+import com.vshershnov.PayGateIntegration.domain.Transaction;
+import com.vshershnov.PayGateIntegration.services.UnichargeProcessingAPIService;
+
+public class UnichargeProcessingAPIServiceImp implements UnichargeProcessingAPIService {
     
     private static int CONNECT_TIMEOUT = 10 * 1000;
     private static int READ_TIMEOUT = 1 * 60 * 1000;
-    private static String EMPTY = "";	  
-	
-    public static void main (String[] args) throws IOException{
-            System.out.println(sendPOST("https://sandbox-secure.unitedthinkers.com/gates/xurl?", 
-		
-	  "&requestType=sale-auth"
-	 + "&userName=myUsername"
-	 + "&password=myP@ssword"
-	 + "&accountId=2001"
-	 + "&transactionIndustryType=RE"
-	 + "&transactionCode=0000000001"
-	 + "&amount=5000"
-	 + "&holderType=P"
-	 + "&holderName=John Smith"
-	 + "&street=12 Main St"
-	 + "&city=Denver"
-	 + "&state=CO"
-	 + "&zipCode=30301"
-	 + "&accountType=R"
-	 + "&accountNumber=4111111111111111"
-	 + "&accountAccessory=0422"
-	 + "&customerAccountCode=0000000001"
-               ));	
-    }    
+    private static String EMPTY = "";
+    private static String GATE_TEST_URL = "https://sandbox-portal.unitedthinkers.com/gates/xurl?requestType=ping&password=1sPlP291P3GVJCD1b3vtU07B1i2bOJKt&userName=TestServiceUser";
+    private static String GATE_URL = "https://sandbox-secure.unitedthinkers.com/gates/xurl?";
+    private static String GATE_AUTHORIZATION_INFO = "&userName=829000"
+			 									+ "&password=TestNt62400~"
+			 									+ "&accountId=829001"
+			 									+ "&transactionIndustryType=RE"
+			 									+ "&transactionCode=0000000001"
+			 									+ "&customerAccountCode=829001";
     
-    public static String sendPOST(String url, String data) throws IOException{
+    
+    public String sendSaleTransaction(Transaction transaction) throws IOException {
+		testGate();
+    	String handle = GATE_AUTHORIZATION_INFO + convertToHandleString(transaction);
+		String response = sendPOST (GATE_URL, handle);
+		return parseResponse(response);
+	}
+	
+    private void testGate() throws IOException {
+		String response = sendPOST(GATE_TEST_URL, "");
+		System.out.println(response);
+	}
+
+	private String parseResponse(String response) {
+		// TODO Auto-generated method stub
+		return response;
+	}
+
+	private String convertToHandleString(Transaction transaction) {
+		String handle = "&requestType=sale" 
+						 + "&amount=" + transaction.getAmount()
+						 + "&holderType=P"
+						 + "&holderName=" + transaction.getHolderName()
+						 + "&street=" + transaction.getStreet()
+						 + "&city=" + transaction.getCity()
+						 + "&state=" + transaction.getState()
+						 + "&zipCode=" + transaction.getZipCode()
+						 + "&accountType=R"
+						 + "&accountNumber=" + transaction.getCard().getCradNumber()
+						 + "&accountAccessory=" + transaction.getCard().getExpDate();
+		return handle;
+	}
+    
+    private String sendPOST(String url, String data) throws IOException{
 		
       HttpURLConnection conn = null;
       InputStream stream = null;
@@ -66,18 +87,18 @@ public class UnichargeProcessingAPIServiceImp {
       if (stream == null){
           System.out.println("Response code is " + conn.getResponseCode());
           return EMPTY;
-      }       
-     
+      }
+      
        return stream2String(stream);	
     }	 
     
-    private static String stream2String(InputStream is) throws IOException{
-	StringBuilder sb = new StringBuilder(8192);
-	BufferedReader br = new BufferedReader(new InputStreamReader(is));
-	String line = null;
-	while ((line = br.readLine())!= null){
-	    sb.append(line);
-	}
-	return sb.toString();
-    }
+    private String stream2String(InputStream is) throws IOException{
+		StringBuilder sb = new StringBuilder(8192);
+		BufferedReader br = new BufferedReader(new InputStreamReader(is));
+		String line = null;
+		while ((line = br.readLine())!= null){
+		    sb.append(line);
+		}
+		return sb.toString();
+    }	
 }

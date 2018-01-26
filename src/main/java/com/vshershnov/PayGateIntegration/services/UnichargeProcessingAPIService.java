@@ -4,8 +4,7 @@ import java.io.IOException;
 
 import com.vshershnov.PayGateIntegration.domain.Transaction;
 
-public interface TransactionService {
-	
-	boolean isSaleSuccessful();
-	void sale(Transaction transaction) throws IOException;
+public interface UnichargeProcessingAPIService {
+
+	public String sendSaleTransaction(Transaction transaction) throws IOException;
 }
