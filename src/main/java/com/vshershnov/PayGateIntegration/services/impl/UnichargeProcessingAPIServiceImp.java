@@ -8,6 +8,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import org.json.JSONObject;
+
 import com.vshershnov.PayGateIntegration.domain.Transaction;
 import com.vshershnov.PayGateIntegration.services.UnichargeProcessingAPIService;
 
@@ -89,10 +91,23 @@ public class UnichargeProcessingAPIServiceImp implements UnichargeProcessingAPIS
           return EMPTY;
       }
       
-       return stream2String(stream);	
+       return stream2JSON(stream);
+    		   //stream2String(stream);	
     }	 
     
-    private String stream2String(InputStream is) throws IOException{
+    private String stream2JSON(InputStream stream) {
+    	JSONObject obj = new JSONObject(stream);
+    	
+    	String responseMessage = obj.optString("responseMessage");
+    	String failureMessage = obj.optString("failureMessage");
+    	
+    	if(responseMessage.isEmpty()){
+    		return failureMessage;
+    	}    	
+		return responseMessage;
+	}
+
+	private String stream2String(InputStream is) throws IOException{
 		StringBuilder sb = new StringBuilder(8192);
 		BufferedReader br = new BufferedReader(new InputStreamReader(is));
 		String line = null;

@@ -33,7 +33,7 @@ public class TransactionServiceImpl implements TransactionService {
 	private boolean isSaleSuccessful(String result) {
 		
 		if(result.equals("Approved")){
-			return false;
+			return true;
 		}
 		return false;
 	}
