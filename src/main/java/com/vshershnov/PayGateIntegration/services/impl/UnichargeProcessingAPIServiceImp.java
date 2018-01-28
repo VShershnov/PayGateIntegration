@@ -5,10 +5,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLDecoder;
 
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
 import com.vshershnov.PayGateIntegration.domain.Transaction;
 import com.vshershnov.PayGateIntegration.services.UnichargeProcessingAPIService;
@@ -40,8 +43,17 @@ public class UnichargeProcessingAPIServiceImp implements UnichargeProcessingAPIS
 		System.out.println(response);
 	}
 
-	private String parseResponse(String response) {
-		// TODO Auto-generated method stub
+	private String parseResponse(String response) throws UnsupportedEncodingException {
+		
+		String[] pairs = response.split("\\&");
+		for (int i = 0; i < pairs.length; i++) {
+		      String[] fields = pairs[i].split("=");
+		      String name = URLDecoder.decode(fields[0], "UTF-8");
+		     
+		      if(name.equals("failureMessage") || name.equals("responseMessage")){
+		    	  return URLDecoder.decode(fields[1], "UTF-8");
+		      }
+		}
 		return response;
 	}
 
@@ -89,12 +101,11 @@ public class UnichargeProcessingAPIServiceImp implements UnichargeProcessingAPIS
       if (stream == null){
           System.out.println("Response code is " + conn.getResponseCode());
           return EMPTY;
-      }
+      }    
       
-       return stream2JSON(stream);
-    		   //stream2String(stream);	
+       return stream2String(stream);	
     }	 
-    
+      
     private String stream2JSON(InputStream stream) {
     	JSONObject obj = new JSONObject(stream);
     	
