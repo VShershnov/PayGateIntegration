@@ -10,9 +10,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 
-import org.json.JSONObject;
-import org.json.JSONStringer;
-
 import com.vshershnov.PayGateIntegration.domain.Transaction;
 import com.vshershnov.PayGateIntegration.services.UnichargeProcessingAPIService;
 
@@ -21,7 +18,10 @@ public class UnichargeProcessingAPIServiceImp implements UnichargeProcessingAPIS
     private static int CONNECT_TIMEOUT = 10 * 1000;
     private static int READ_TIMEOUT = 1 * 60 * 1000;
     private static String EMPTY = "";
-    private static String GATE_TEST_URL = "https://sandbox-portal.unitedthinkers.com/gates/xurl?requestType=ping&password=1sPlP291P3GVJCD1b3vtU07B1i2bOJKt&userName=TestServiceUser";
+    private static String GATE_TEST_URL = "https://sandbox-portal.unitedthinkers.com/gates/xurl?"
+    										+ "requestType=ping"
+    										+ "&password=1sPlP291P3GVJCD1b3vtU07B1i2bOJKt"
+    										+ "&userName=TestServiceUser";
     private static String GATE_URL = "https://sandbox-secure.unitedthinkers.com/gates/xurl?";
     private static String GATE_AUTHORIZATION_INFO = "&userName=829000"
 			 									+ "&password=TestNt62400~"
@@ -105,19 +105,7 @@ public class UnichargeProcessingAPIServiceImp implements UnichargeProcessingAPIS
       
        return stream2String(stream);	
     }	 
-      
-    private String stream2JSON(InputStream stream) {
-    	JSONObject obj = new JSONObject(stream);
-    	
-    	String responseMessage = obj.optString("responseMessage");
-    	String failureMessage = obj.optString("failureMessage");
-    	
-    	if(responseMessage.isEmpty()){
-    		return failureMessage;
-    	}    	
-		return responseMessage;
-	}
-
+    
 	private String stream2String(InputStream is) throws IOException{
 		StringBuilder sb = new StringBuilder(8192);
 		BufferedReader br = new BufferedReader(new InputStreamReader(is));

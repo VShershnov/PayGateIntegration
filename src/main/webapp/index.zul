@@ -2,66 +2,66 @@
 	<style src="/widgets/effects/form_effect/styles.css"/>    
 	<window apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm')@init('com.vshershnov.PayGateIntegration.TransactionViewModel')"
-		validationMessages="@id('vmsgs')">
+		validationMessages="@id('vmsgs')">		
 		
 		<vlayout spacing="7px">
 			 <label value="Pay Gate Transaction Sale Info" style="font-size:16px;font-weight:bold;" />
 			 
 			<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="Card Number: "/>				
-	    		<textbox id="cardNumber" width='150px' value = "@save(vm.transaction.card.cradNumber) @validator('beanValidator')"/>
+	    		<textbox id="cardNumber" width='150px' value = "@save(vm.transaction.card.cradNumber, before='sale') @validator('beanValidator')"/>
 	    		<label value="@load(vmsgs[cardNumber])"/>	 
 	    	</hlayout>	    	
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="Exp Date: "/>				
-	    		<textbox id="expDate" width='150px' value = "@save(vm.transaction.card.expDate) @validator('beanValidator')"/>
+	    		<textbox id="expDate" width='150px' value = "@save(vm.transaction.card.expDate, before='sale') @validator('beanValidator')"/>
 	    		<label value="@load(vmsgs[expDate])"/>	    	
 	    	</hlayout>	    	
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="CSC Code: "/>				
-	    		<textbox id="cscCode" width='150px' value = "@save(vm.transaction.card.cscCode) @validator('beanValidator')"/>
+	    		<textbox id="cscCode" width='150px' value = "@save(vm.transaction.card.cscCode, before='sale') @validator('beanValidator')"/>
 	    		<label value="@load(vmsgs[cscCode])"/>
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="Amount: "/>				
-	    		<textbox id="amount" width='150px' value = "@save(vm.transaction.amount) @validator('beanValidator')"/>
+	    		<textbox id="amount" width='150px' value = "@save(vm.transaction.amount, before='sale') @validator('beanValidator')"/>
 	    		<label value="@load(vmsgs[amount])"/>	    	
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="Holder Name: "/>				
-	    		<textbox id="holderName" width='150px' value = "@save(vm.transaction.holderName) @validator('beanValidator')" />
+	    		<textbox id="holderName" width='150px' value = "@save(vm.transaction.holderName, before='sale') @validator('beanValidator')" />
 	    		<label value="@load(vmsgs[holderName])"/>	    	
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="Street: "/>				
-	    		<textbox id="street" width='150px' value = "@save(vm.transaction.street) @validator('beanValidator')"/>
+	    		<textbox id="street" width='150px' value = "@save(vm.transaction.street, before='sale') @validator('beanValidator')"/>
 	    		<label value="@load(vmsgs[street])"/>	    	
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="City: "/>				
-	    		<textbox id="city" width='150px' value = "@save(vm.transaction.city) @validator('beanValidator')"/>
-	    		<label value="@load(vmsgs[city])"/>	    	
+	    		<textbox id="city" width='150px' value = "@save(vm.transaction.city, before='sale') @validator('beanValidator')"/>
+	    		<label value="@load(vmsgs[city])"/>
 	    	</hlayout>
 	    	
-	    	<hlayout spacing="20px" valign="middle"> 
-				<label class="name" value="State: "/>				
-	    		<textbox id="state" width='150px' value = "@save(vm.transaction.state) @validator('beanValidator')"/>
+	    	<hlayout spacing="20px" valign="middle">
+				<label class="name" value="State: "/>
+	    		<textbox id="state" width='150px' value = "@save(vm.transaction.state, before='sale') @validator('beanValidator')"/>
 	    		<label value="@load(vmsgs[state])"/>
 	    	</hlayout>
 	    	
 	    	<hlayout spacing="20px" valign="middle"> 
 				<label class="name" value="ZipCode: "/>				
-	    		<textbox id="zipCode" width='150px' value = "@save(vm.transaction.zipCode) @validator('beanValidator')"/>
+	    		<textbox id="zipCode" width='150px' value = "@save(vm.transaction.zipCode, before='sale') @validator('beanValidator')"/>
 	    		<label value="@load(vmsgs[zipCode])"/>	    	
 	    	</hlayout>
 	    	
-			<button label="Confirm sale transaction" onClick="@command('sale')"/>
+			<button label="Confirm" onClick="@command('sale')"/>
 		</vlayout>		
 	</window>
 </zk>
